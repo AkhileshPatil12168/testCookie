@@ -14,7 +14,7 @@ app.use(cors({
 app.use(cookieParser());
 
 app.get('/set-cookie', (req, res) => {
-  res.cookie('backend_cookie', 'cookie_value', { httpOnly: true, sameSite: 'none', secure: true }); 
+  res.cookie('backend_cookie', 'cookie_value', { httpOnly: true, sameSite: 'none', secure: true, domain:".onrender.com" }); 
   res.send('Cookie set by backend');
 });
 
