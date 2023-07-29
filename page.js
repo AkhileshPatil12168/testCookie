@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import axios from 'axios';
+import Cookies from "universal-cookie";
 
 const MyComponent = () => {
+    const cookies = new Cookies();
   const [backendCookie, setBackendCookie] = useState('');
-
+  const cook = cookies.get("backend_cookie");
  
   const fetchBackendCookie = async () => {
     try {
@@ -21,6 +23,8 @@ const MyComponent = () => {
     }
   };
 
+  useEffect(()=>{},[backendCookie])
+
  
   const handleSetCookie = () => {
     fetchBackendCookie();
@@ -30,6 +34,7 @@ const MyComponent = () => {
     <div>
       <h1>Backend Cookie Value:</h1>
       <p>{backendCookie}</p>
+      <p>{cook?cook:"not set"}</p>
       <button onClick={handleSetCookie}>Set Cookie</button>
     </div>
   );
