@@ -5,13 +5,13 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 
+app.options('*', cors());
 app.use(cors({
   origin: 'https://testcookiefront.onrender.com', 
   credentials: true, 
 }));
 
 app.use(cookieParser());
-
 
 app.get('/set-cookie', (req, res) => {
   res.cookie('backend_cookie', 'cookie_value', { httpOnly: true, sameSite: 'none', secure: true }); 
